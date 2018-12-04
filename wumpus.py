@@ -91,8 +91,9 @@ class WumpusMDP(FiniteStateMDP):
 
     @property
     def states(self):
-        return itertools.product(
-            range(self.width), range(self.height), (True, False), (True, False))
+        return [WumpusState(*x, self.width, self.height) for x in
+                    itertools.product(range(self.width), range(self.height),
+                                      (True, False), (True, False))]
 
     @property
     def actions(self):
